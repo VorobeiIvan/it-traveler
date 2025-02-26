@@ -1,7 +1,48 @@
+<script setup>
+import { defineProps, computed } from 'vue'
+import { RouterLink } from 'vue-router'
+
+const props = defineProps({
+  variant: {
+    default: 'primary',
+    type: String,
+    validator: (value) => {
+      return ['primary', 'gradient', 'outlined'].includes(value)
+    }
+  },
+  to: String,
+  isLoading: {
+    default: false,
+    type: Boolean
+  }
+})
+
+const bgStyles = computed(() => {
+  return props.variant === 'gradient'
+    ? 'bg-gradient-to-r from-[#FFA279] to-[#F3743D]'
+    : 'bg-[#FFA279]'
+})
+
+const isLink = computed(() => !!props.to)
+
+const componentName = computed(() => {
+  return isLink.value ? RouterLink : 'button'
+})
+const link = computed(() => {
+  return isLink.value ? props.to : undefined
+})
+</script>
+
 <template>
-  <button
-    class="bg-[#FFA279] rounded-xl px-10 py-3.5 text-white font-bold tracking-wider-[-0.408px] text-[16px] leading-[22px]"
+  <component
+    :is="componentName"
+    class="rounded-xl py-3 px-10 text-white font-bold -tracking-wider"
+    :class="bgStyles"
+    :to="link"
   >
-    Почати роботу
-  </button>
+    <template v-if="props.isLoading">Loading...</template>
+    <template v-else>
+      <slot></slot>
+    </template>
+  </component>
 </template>

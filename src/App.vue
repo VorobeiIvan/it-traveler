@@ -1,22 +1,7 @@
 <script setup>
-import IButton from './components/IButton/IButton.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <main class="flex h-screen">
-    <section class="flex-1 flex justify-center items-center px-5 bg-[#FFA279]">
-      <div class="text-center text-white">
-        <img class="inline mb-6" src="./assets/img/map-pin.svg" alt="map pin icon" />
-        <h1 class="font-bold text-4xl mb-7">IT traveler</h1>
-        <p class="leading-6 mb-11">
-          Простий і зручний веб додаток, який дозволить тобі відмічати твої улюблені місця, а також
-          ті, в яких би ти дуже хотів побувати. Тож не зволікай і спробуй сам.
-        </p>
-        <IButton></IButton>
-      </div>
-    </section>
-    <section class="flex-1">
-      <img class="h-full object-cover" src="./assets/img/map.png" alt="Map with markers" />
-    </section>
-  </main>
+  <router-view />
 </template>

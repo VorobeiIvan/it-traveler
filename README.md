@@ -33,3 +33,7 @@ npm run build
 ```sh
 npm run lint
 ```
+
+
+
+### Project [Figma](https://www.figma.com/design/92TuG7S5gurnXagET8Bb6g/IT-traveler-(Copy)?node-id=0-1&p=f&m=dev)
